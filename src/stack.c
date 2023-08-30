@@ -73,7 +73,9 @@ stack_node_t *pop(stack_head_t *stack) {
   stack_node_t *node = NULL;
   if(stack && !is_empty(stack))
   {
-    
+    node = stack->top;
+    stack->top = stack->top->previous;
+    stack->size -= 1;
   }
   return node;
 }
