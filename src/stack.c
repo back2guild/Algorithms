@@ -27,7 +27,7 @@ stack_head_t *create() {
   return stack;
 }
 void destroy(stack_head_t *stack) {
-  if (stack && !is_empty(stack)) {
+  if (stack && !is_stack_empty(stack)) {
     while (stack->top != NULL) {
       stack_node_t *temp = stack->top;
       stack->top = temp->previous;
@@ -48,7 +48,7 @@ stack_node_t *create_node(int value) {
   return node;
 }
 
-bool is_empty(stack_head_t *stack) {
+bool is_stack_empty(stack_head_t *stack) {
   return stack == NULL || stack->size == 0 || stack->top == NULL;
 }
 
@@ -57,7 +57,7 @@ stack_node_t *push(stack_head_t *stack, int data) {
   if (stack) {
     node = create_node(data);
     if (node) {
-      if (is_empty(stack)) {
+      if (is_stack_empty(stack)) {
         stack->size += 1;
       } else {
         node->previous = stack->top;
@@ -71,7 +71,7 @@ stack_node_t *push(stack_head_t *stack, int data) {
 
 stack_node_t *pop(stack_head_t *stack) {
   stack_node_t *node = NULL;
-  if(stack && !is_empty(stack))
+  if(stack && !is_stack_empty(stack))
   {
     node = stack->top;
     stack->top = stack->top->previous;
