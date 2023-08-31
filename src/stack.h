@@ -12,4 +12,6 @@ void destroy(stack_head_t*);
 bool is_stack_empty(stack_head_t*);
 stack_node_t* push(stack_head_t*, int);
 stack_node_t* pop(stack_head_t*);
+void display_stack(stack_head_t*);
+unsigned int stack_size(stack_head_t*);
 #endif /* stack_h */

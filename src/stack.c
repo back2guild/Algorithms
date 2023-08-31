@@ -6,6 +6,7 @@
 //
 
 #include "stack.h"
+#include <stdio.h>
 
 struct StackNode {
   int number;
@@ -49,33 +50,49 @@ stack_node_t *create_node(int value) {
 }
 
 bool is_stack_empty(stack_head_t *stack) {
-  return stack == NULL || stack->size == 0 || stack->top == NULL;
+  return stack == NULL || (stack->size == 0 && stack->top == NULL);
 }
 
 stack_node_t *push(stack_head_t *stack, int data) {
   stack_node_t *node = NULL;
-  if (stack) {
+  if (stack != NULL) {
     node = create_node(data);
     if (node) {
-      if (is_stack_empty(stack)) {
-        stack->size += 1;
-      } else {
-        node->previous = stack->top;
-        stack->top = node;
-        stack->size += 1;
+      if (!is_stack_empty(stack)) {
+        node->previous = stack->top; 
       }
+      stack->top = node;
+      stack->size += 1;
     }
   }
   return node;
 }
 
-stack_node_t *pop(stack_head_t *stack) {
+stack_node_t* pop(stack_head_t *stack) {
   stack_node_t *node = NULL;
-  if(stack && !is_stack_empty(stack))
+  if(stack != NULL && !is_stack_empty(stack))
   {
     node = stack->top;
     stack->top = stack->top->previous;
     stack->size -= 1;
   }
   return node;
+}
+
+void display_stack(stack_head_t *stack) {
+  if(stack && !is_stack_empty(stack))
+  {
+    stack_node_t *node = stack->top;
+    while(node != NULL)
+    {
+      printf("%d\t", node->number);
+      node = node->previous;
+    }
+    //printf("%d\t", node->number);
+    printf("\n");
+  }
+}
+
+unsigned int stack_size(stack_head_t *stack) {
+  return stack->size;
 }
