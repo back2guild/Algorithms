@@ -1,5 +1,5 @@
 CC=gcc
-CFLAG=-Wall -Wextra -Werror -g -o0
+CFLAG=-Wall -Wextra -Werror -g -o0 -Wformat
 LIB_COMMAND=ar -rc
 
 INIT=init
