@@ -1,5 +1,5 @@
 CC=gcc
-CFLAG=-Wall -Wextra -Werror -g -o0 -Wformat
+CFLAG=-Wall -Wextra -Werror -g -o0 -Wformat -std=c17 -Wmissing-prototypes -Wstrict-prototypes -Wold-style-definition
 LIB_COMMAND=ar -rc
 
 INIT=init

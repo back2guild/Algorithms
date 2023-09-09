@@ -14,7 +14,7 @@ void bit_pattern(int num) {
   }
 }
 
-void get_sys_info() {
+void get_sys_info(void) {
   struct utsname a;
   if (uname(&a) == 0) {
     printf("machine = %s\n", a.machine);

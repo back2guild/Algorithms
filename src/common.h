@@ -13,8 +13,8 @@
 #include <time.h>
 
 void bit_pattern(int);
-void get_sys_info();
+void get_sys_info(void);
 void create_random_list(unsigned long long *input, unsigned long lower, unsigned long long upper, unsigned long long size);
-void* create_list();
+void* create_list(void);
 
 #endif
