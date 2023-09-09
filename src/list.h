@@ -9,7 +9,7 @@ typedef struct Element element_t;
 typedef struct RootElement root_element_t;
 
 
-root_element_t* create_linklist();
+root_element_t* create_linklist(void);
 unsigned long long get_list_size(root_element_t*);
 bool add_at_front(root_element_t*, element_t*);
 bool add_at_rear(root_element_t*, element_t*);

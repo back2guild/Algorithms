@@ -13,7 +13,7 @@ struct RootElement {
   struct Element *current;
 };
 
-root_element_t* create_linklist()
+root_element_t* create_linklist(void)
 {
     root_element_t *root = (root_element_t*) malloc(sizeof(root_element_t));
     if(root)
