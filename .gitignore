@@ -54,3 +54,4 @@ dkms.conf
 a.out
 *.dSYM/
 tests/bin/
+Debian.Precompiledold_Debian.pem
