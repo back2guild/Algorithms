@@ -67,7 +67,7 @@ clean:
 
 $(TESTBINDIR)/%: $(TESTDIR)/%.c
 	# $(CC) $(CFLAG) $< $(LIB) -o $@ -lcriterion -lm
-	$(CC) $(CFLAG) $< $(OBJS) -o $@
+	$(CC) $(CFLAG) $< $(OBJS) -o $@ -lcriterion -lm
 
 test: clean $(LIB) $(TESTBINDIR) $(TESTBINS)
 	for t in $(TESTBINS) ; do ./$$t --verbose ; done

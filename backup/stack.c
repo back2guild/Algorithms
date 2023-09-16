@@ -88,7 +88,6 @@ void display_stack(stack_head_t *stack) {
       printf("%d\t", node->number);
       node = node->previous;
     }
-    //printf("%d\t", node->number);
     printf("\n");
   }
 }
