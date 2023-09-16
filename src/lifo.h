@@ -14,7 +14,7 @@ typedef struct {
   int top;
 } LIFO_t;
 
-typedef void (*printer)(void*, int);
+typedef void (*printer)(void*);
 
 LIFO_t *create(int maxSize);
 LIFO_t *destroy(LIFO_t *lifo);
@@ -24,5 +24,5 @@ void *top(LIFO_t *lifo);
 int count(LIFO_t *lifo);
 bool isempty(LIFO_t *lifo);
 bool isfull(LIFO_t *lifo);
-void display(LIFO_t *, printer);
+void display(LIFO_t*, printer);
 #endif

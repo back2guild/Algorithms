@@ -64,6 +64,16 @@ bool isempty(LIFO_t *lifo) { return (lifo->count == 0); }
 
 bool isfull(LIFO_t *lifo) { return (lifo->count == lifo->maxSize); }
 
-void display(LIFO_t *lifo,printer p) {
-    p(*(lifo->lifoList), lifo->maxSize);
+void display(LIFO_t* lifo, printer ullptr)
+{
+  if(lifo !=NULL && !isempty(lifo) && lifo->lifoList != NULL)
+  {
+    void ** lifoList = lifo->lifoList;
+    for(int i = lifo->top; i>=0; i--)
+    {
+      void *ptr = lifoList[i];
+      ullptr(ptr);
+    }
+    printf("\n");
+  }
 }

@@ -26,34 +26,32 @@ void test_push(LIFO_t *stack) {
         (unsigned long long *)malloc(sizeof(unsigned long long));
     if (temp) {
       *temp = ((rand() % (SIZE - 1 + 1)) + 1);
-      printf("inserting %llu, address = %p\t", *temp, temp);
+      //printf("inserting %llu, address = %p\t", *temp, temp);
       assert(push(stack, temp) == true);
-      printf(" ---> %llu\n", *((unsigned long long*) top(stack)));
+      //printf(" ---> %llu\n", *((unsigned long long*) top(stack)));
     } else {
       printf("Failed to create LIFO node\n");
     }
   }
 }
 
-void test_display(LIFO_t *stack)
+void test_display(void *ptr)
 {
-  printf("Starting display\n");
-  assert(!isempty(stack));
-  unsigned long long *listPtr = *((unsigned long long **) stack->lifoList);
-  
-  for(int i = (stack->count - 1) ; i >=0 ; i--)
-  {
-    printf("%llu\t", *(listPtr+i));
-  }
-  printf("\nFinished Display\n");
+  unsigned long long *ullPtr = (unsigned long long *) ptr;
+  printf("%llu\t", *ullPtr);
+}
+
+
+void test_pop(void *ptr)
+{
+  assert(*((unsigned long long*) top(ptr)) == *((unsigned long long*) pop(ptr)));
 }
 
 int main(int argc, char **argv) {
   if (argc == 1 && argv != NULL) {
     LIFO_t *stack = test_create_lifo();
     test_push(stack);
-    //display(stack, print_ull);
-    test_display(stack);
+    display(stack, test_display);
     destroy(stack);
   }
 }
