@@ -1,7 +1,8 @@
 CC=gcc
 # CFLAG=-Wall -Wextra -Werror -g -o0 -Wformat -std=c17 -Wmissing-prototypes -Wstrict-prototypes -Wold-style-definition
 #CFLAG=-Wall -Wextra -Werror -g -o0 -Wformat -std=c17
-CFLAG=-Wall -Wextra -Werror -g -o0 
+# CFLAG=-Wall -Wextra -Werror -g -o0
+# CFLAG=-Wall -g -o0 
 LIB_COMMAND=ar -rc
 
 INIT=init
@@ -67,10 +68,13 @@ clean:
 
 $(TESTBINDIR)/%: $(TESTDIR)/%.c
 	# $(CC) $(CFLAG) $< $(LIB) -o $@ -lcriterion -lm
-	$(CC) $(CFLAG) $< $(OBJS) -o $@
+	$(CC) $(CFLAG) $< $(OBJS) -o $@ -lcriterion -lm
 
 test: clean $(LIB) $(TESTBINDIR) $(TESTBINS)
 	for t in $(TESTBINS) ; do ./$$t --verbose ; done
 
 $(TESTBINDIR):
 	@mkdir $@
+
+leak: clean $(LIB) $(TESTBINDIR) $(TESTBINS)
+	for t in $(TESTBINS); do valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --log-file=valgrind-out.txt  ./$$t; done
