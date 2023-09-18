@@ -21,7 +21,6 @@ lhead_t* createLinkList(void)
     head->count = 0;
     head->head = NULL;
     return head;
-<<<<<<< HEAD
 }
 
 size_t getSize(lhead_t* head) {
@@ -31,6 +30,3 @@ size_t getSize(lhead_t* head) {
  lnode_t* getHead(lhead_t *head) {
     return (head != NULL ? head->head: NULL);
  }
-=======
-}
->>>>>>> 9460da3f726b47576d49d1e17a08bada442fa9ab
