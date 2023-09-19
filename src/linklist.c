@@ -24,9 +24,62 @@ lhead_t* createLinkList(void)
 }
 
 size_t getSize(lhead_t* head) {
-    return (head != NULL ? head->count : 0);
+    return (NULL != head ? head->count : 0);
 }
 
  lnode_t* getHead(lhead_t *head) {
-    return (head != NULL ? head->head: NULL);
+    return (NULL != head ? head->head: NULL);
+ }
+
+ bool isListEmpty(lhead_t *head) {
+    assert(NULL != head);
+    return (head->count == 0 && head->head == NULL);
+ }
+
+ bool addLinkListNode(lhead_t *head, lnode_t *node) {
+    assert(NULL != head);
+    bool success = false;
+    if(isListEmpty(head)) { //First node
+        head->head = node;
+    }
+    else
+    {
+        lnode_t *temp = head->head;
+        while(temp != NULL)
+        {
+            temp = temp->next;
+        }
+        temp->next = node;
+    }
+    head->count++;
+    success = true;
+    return success;
+ }
+
+ void destroyLinkList(lhead_t *head) {
+    assert(NULL != head);
+    if(isListEmpty(head))
+    {
+        free(head);
+    }
+    else
+    {
+        lnode_t *temp = head->head;
+        while(NULL != temp)
+        {
+            lnode_t *t = temp->next;
+            free(temp);
+            temp = t;
+        }
+        free(temp);
+        free(head);
+    }
+ }
+
+ lnode_t* createLinkListNode(void *vp) {
+    lnode_t *node = (lnode_t*) malloc(sizeof(lnode_t));
+    assert(node != NULL);
+    node->data = vp;
+    node->next = NULL;
+    return node;
  }
