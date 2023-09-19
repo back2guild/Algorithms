@@ -9,4 +9,5 @@
     typedef struct NodeElement node_t;
 
     head_t* createBST(int (*cmp)(node_t*, node_t*), void (*printer)(node_t*));
+    bool isEmpty(head_t*);
 #endif

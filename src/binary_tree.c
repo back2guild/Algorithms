@@ -23,3 +23,7 @@ head_t* createBST(int (*cmp)(node_t*, node_t*), void (*printer)(node_t*)) {
     tree->compare = cmp;
     return tree;
 }
+
+bool isEmpty(head_t *tree) {
+    return (NULL == tree->root && 0 == tree->size);
+}
