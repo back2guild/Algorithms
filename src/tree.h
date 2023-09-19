@@ -10,4 +10,5 @@
 
     head_t* createBST(int (*cmp)(node_t*, node_t*), void (*printer)(node_t*));
     bool isEmpty(head_t*);
+    bool insertBST(head_t*, node_t*);
 #endif

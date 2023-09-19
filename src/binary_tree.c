@@ -27,3 +27,9 @@ head_t* createBST(int (*cmp)(node_t*, node_t*), void (*printer)(node_t*)) {
 bool isEmpty(head_t *tree) {
     return (NULL == tree->root && 0 == tree->size);
 }
+
+bool insertBST(head_t *tree, node_t *node) {
+    bool success = false;
+    
+    return success;
+}
