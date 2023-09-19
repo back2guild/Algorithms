@@ -55,5 +55,4 @@ Test(LinkList, AddToLinkList, .init=setup, .fini = teardown) {
     {
         cr_expect(addLinkListNode(linkList, createLinkListNode(&i)) == true, "Must be successful to add node");
     }
-       
 }

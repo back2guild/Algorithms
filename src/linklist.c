@@ -45,7 +45,7 @@ size_t getSize(lhead_t* head) {
     else
     {
         lnode_t *temp = head->head;
-        while(temp != NULL)
+        while(NULL != temp->next)
         {
             temp = temp->next;
         }
@@ -65,7 +65,7 @@ size_t getSize(lhead_t* head) {
     else
     {
         lnode_t *temp = head->head;
-        while(NULL != temp)
+        while(NULL != temp->next)
         {
             lnode_t *t = temp->next;
             free(temp);
