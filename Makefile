@@ -75,3 +75,6 @@ test: clean $(LIB) $(TESTBINDIR) $(TESTBINS)
 
 $(TESTBINDIR):
 	@mkdir $@
+
+leak: clean $(LIB) $(TESTBINDIR) $(TESTBINS)
+	for t in $(TESTBINS); do valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --log-file=valgrind-out.txt  ./$$t; done

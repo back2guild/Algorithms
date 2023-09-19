@@ -85,12 +85,12 @@ void *dequeue(Q_t *q)
 
 void *front(Q_t *q)
 {
-    return NULL;
+    return (q && !is_empty(q) ? q->qArray[q->front] : NULL);
 }
 
 void *rear(Q_t *q)
 {
-    return NULL;
+    return (q && !is_empty(q) ? q->qArray[q->rear] : NULL);;
 }
 
 int qCount(Q_t *q)
