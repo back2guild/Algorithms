@@ -1,10 +1,10 @@
 FROM ubuntu:22.04
 
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y build-essential gdb
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y build-essential gdb nasm strace ltrace valgrind libcriterion-dev
 
-COPY . /tmp
-WORKDIR /tmp
+WORKDIR /tmp/build
 
-RUN make clean
+COPY . .
 
-RUN make test
+CMD ["make", "test"]
+# RUN make test
