@@ -8,15 +8,7 @@
     typedef struct RootElement head_t;
     typedef struct NodeElement node_t;
 
-    /**
-     * Pre Order Traversal - (Root - Left - Right)
-    */
-
-   /**
-     * In Order Traversal - (Left - Root - Right)
-    */
-
-   /**
-     * Post Order Traversal - (Left - Right - Root)
-    */
+    head_t* createBST(int (*cmp)(node_t*, node_t*), void (*printer)(node_t*));
+    bool isEmpty(head_t*);
+    bool insertBST(head_t*, node_t*);
 #endif
