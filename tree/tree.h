@@ -8,6 +8,7 @@
 	#include <stdbool.h>
 
 	#define INVALID_TREE_SIZE -1
+	
 
 	typedef int (*tree_compare) (void*, void*); 	
 	typedef struct TreeHead thead_t;
@@ -15,4 +16,5 @@
 
 	thead_t* createTree(tree_compare);
 	int treeSize(thead_t*);
+	bool isTreeEmpty(thead_t*);
 #endif

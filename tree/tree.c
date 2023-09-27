@@ -35,3 +35,12 @@ int treeSize(thead_t *tree)
 	}
 	return tree->size;
 }
+
+bool isTreeEmpty(thead_t *tree)
+{
+	if(!tree)
+	{
+		return false;
+	}
+	return ((treeSize(tree) > 0) ? true : false);
+}
