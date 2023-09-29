@@ -1,14 +1,20 @@
 #ifndef _TREE_H_
 #define _TREE_H_
-    #include <stdio.h>
-    #include <stdlib.h>
-    #include <stdbool.h>
-    #include <assert.h>
+	
+	// Define header files
+	#include <stdio.h>
+	#include <stdlib.h>
+	#include <assert.h>
+	#include <stdbool.h>
 
-    typedef struct RootElement head_t;
-    typedef struct NodeElement node_t;
+	#define INVALID_TREE_SIZE -1
+	
 
-    head_t* createBST(int (*cmp)(node_t*, node_t*), void (*printer)(node_t*));
-    bool isEmpty(head_t*);
-    bool insertBST(head_t*, node_t*);
+	typedef int (*tree_compare) (void*, void*); 	
+	typedef struct TreeHead thead_t;
+	typedef struct TreeNode tnode_t;
+
+	thead_t* createTree(tree_compare);
+	int treeSize(thead_t*);
+	bool isTreeEmpty(thead_t*);
 #endif
