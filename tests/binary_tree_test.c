@@ -1,4 +1,6 @@
 #include "../src/tree.h"
+#include "../src/comparator.h"
+
 
 
 void test_create_tree() {
