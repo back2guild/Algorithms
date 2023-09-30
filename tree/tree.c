@@ -42,5 +42,5 @@ bool isTreeEmpty(thead_t *tree)
 	{
 		return false;
 	}
-	return ((treeSize(tree) > 0) ? true : false);
+	return ((treeSize(tree) > 0) ? false : true);
 }

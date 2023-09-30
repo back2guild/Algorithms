@@ -1,56 +1,46 @@
 #include "tree.h"
 
-struct NodeElement {
-    void *data;
-    struct NodeElement *left;
-    struct NodeElement *right;
+
+struct TreeNode
+{
+	void *data;
+	struct TreeNode *left;
+	struct TreeNode *right;
 };
 
-struct RootElement {
-    int size;
-    struct NodeElement *root;
-    void (*printer)(node_t*);
-    int (*compare)(node_t*, node_t*);
+struct TreeHead
+{
+	int (*tcompare)(void *, void *);
+	struct TreeNode *root;
+	int size;
 };
 
-
-head_t* createBST(int (*cmp)(node_t*, node_t*), void (*printer)(node_t*)) {
-    head_t *tree = (head_t*) malloc(sizeof(head_t));
-    assert(NULL != tree);
-    tree->root = NULL;
-    tree->size = 0;
-    tree->printer = printer;
-    tree->compare = cmp;
-    return tree;
+thead_t *createTree(tree_compare cmp)
+{
+	thead_t *tree = (thead_t *)malloc(sizeof(thead_t));
+	if (tree)
+	{
+		tree->root = NULL;
+		tree->size = 0;
+		tree->tcompare = cmp;
+	}
+	return tree;
 }
 
-bool isEmpty(head_t *tree) {
-    return (NULL == tree->root && 0 == tree->size);
+int treeSize(thead_t *tree)
+{
+	if(!tree)
+	{
+		return INVALID_TREE_SIZE;
+	}
+	return tree->size;
 }
 
-void _insert(head_t *tree, node_t *root, node_t *node) {
-    if(NULL != tree && NULL != root) {
-        if(tree->compare(root, node) == 0) {
-            
-        }
-        else if(tree->compare(root, node) < 0) {
-            _insert(tree, root->left, node);
-        }
-        else {
-            _insert(tree, root->right, node);
-        }
-    }
-}
-
-bool insertBST(head_t *tree, node_t *node) {
-    bool success = false;
-    if(isEmpty(tree)) {
-        tree->root = node;
-    }
-    else {
-        _insert(tree, tree->root, node);
-    }
-    tree->size++;
-    success = true;
-    return success;
+bool isTreeEmpty(thead_t *tree)
+{
+	if(!tree)
+	{
+		return false;
+	}
+	return ((treeSize(tree) > 0) ? false : true);
 }
