@@ -14,8 +14,4 @@ def main_factorial(cmdArgs):
     assert(len(cmdArgs) == 2)
     num = int(cmdArgs[1])
     print(f"factorial of {num} is {factorial(num)}")
-
-
-if __name__ == "__main__":
-    main_factorial(argv)
     
