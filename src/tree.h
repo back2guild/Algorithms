@@ -17,4 +17,5 @@
 	thead_t* createTree(tree_compare);
 	int treeSize(thead_t*);
 	bool isTreeEmpty(thead_t*);
+	bool destroyTree(thead_t*);
 #endif

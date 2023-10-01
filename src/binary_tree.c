@@ -44,3 +44,9 @@ bool isTreeEmpty(thead_t *tree)
 	}
 	return ((treeSize(tree) > 0) ? false : true);
 }
+
+bool destroyTree(thead_t *tree)
+{
+	
+}
+
