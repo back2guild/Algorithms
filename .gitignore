@@ -50,10 +50,13 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
-.vscode
+.vscode/
 a.out
 *.dSYM/
 tests/bin/
 Debian.pem
 old_Debian.pem
 .DS_Store
+venv/
+__pycache__/
+.pytest_cache/
