@@ -1,12 +1,13 @@
 #include "../src/tree.h"
 #include "../src/comparator.h"
+#include <criterion/criterion.h>
 
 thead_t *tree = NULL;
 
 void setup()
 {
     printf("starting tree test setup\n");
-    *tree = createTree(compareAsInt);
+    tree = createTree(compareAsInt);
     printf("finishing tree test setup\n");
 }
 
@@ -17,11 +18,6 @@ void teardown()
     printf("finishing tree test teardown\n");
 }
 
-void test_create_tree(.init=setup, .fini=teardown) {
+Test(BinaryTree, CreateTree, .init=setup, .fini=teardown) {
     assert(NULL != tree && isTreeEmpty(tree) == true);
-}
-
-int main(int argc, char const *argv[]) {
-    test_create_tree();
-    return 0;
 }
