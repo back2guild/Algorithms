@@ -1,4 +1,5 @@
 #include "tree.h"
+#include <stdlib.h>
 
 
 struct TreeNode
@@ -45,8 +46,18 @@ bool isTreeEmpty(thead_t *tree)
 	return ((treeSize(tree) > 0) ? false : true);
 }
 
-bool destroyTree(thead_t *tree)
-{
-	
+void destroy(tnode_t *node) {
+	if(node)
+	{
+		destroy(node->left);
+		destroy(node->right);
+		free(node->data);
+	}
 }
 
+bool destroyTree(thead_t *tree)
+{
+	if(!isTreeEmpty(tree))
+		destroy(tree->root);
+	free(tree);
+}
