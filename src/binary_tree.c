@@ -61,4 +61,3 @@ bool destroyTree(thead_t *tree)
 		destroy(tree->root);
 	free(tree);
 }
-
