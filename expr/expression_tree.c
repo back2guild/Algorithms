@@ -1,6 +1,9 @@
+#include <assert.h>
+#include <ctype.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 typedef struct BTNode {
     void *data;
@@ -34,6 +37,13 @@ bt_head__t* createTree(compare cmp) {
         fprintf(stderr, "Error: Failed to create a tree\n");
     }
     return tree;
+}
+
+int cmp(void *a, void *b) {
+    assert(NULL != a && NULL != b);
+    char *ca = (char*) a;
+    char *cb = (char*) b;
+    return (*ca - *cb);
 }
 
 bt_node__t* createTreeNode(void* data) {
@@ -76,7 +86,23 @@ void addNode(bt_head__t *tree, bt_node__t *node) {
 void process(char *expr) {
     if(expr)
     {
-
+        bt_head__t *tree = createTree(cmp);
+        while(*expr != '\0')
+        {
+            if(!isblank(*expr)) // bypass spaces
+            {
+                bt_node__t *node = createTreeNode(expr);
+                if(node)
+                {
+                    addNode(tree, node);
+                }
+                else {
+                    exit(-1);
+                }
+            }
+            expr++;
+        }
+        printf("\n");
     }
     else {
         printf("Nothing to process\n");
@@ -86,5 +112,5 @@ void process(char *expr) {
 
 int main(int argc, char **argv) {
     //a * (b + c) + d
-    process("a*(b+c)+d");
+    process("a * ( b + c ) + d");
 }

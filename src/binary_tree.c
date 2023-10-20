@@ -46,11 +46,11 @@ bool isTreeEmpty(thead_t *tree)
 	return ((treeSize(tree) > 0) ? false : true);
 }
 
-void destroy(tnode_t *node) {
+void __destroy(tnode_t *node) {
 	if(node)
 	{
-		destroy(node->left);
-		destroy(node->right);
+		__destroy(node->left);
+		__destroy(node->right);
 		free(node->data);
 	}
 }
@@ -58,6 +58,6 @@ void destroy(tnode_t *node) {
 bool destroyTree(thead_t *tree)
 {
 	if(!isTreeEmpty(tree))
-		destroy(tree->root);
+		__destroy(tree->root);
 	free(tree);
 }
